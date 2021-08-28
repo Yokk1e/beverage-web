@@ -45,8 +45,7 @@ function BeverageList() {
   });
   const [cartItems, setCartItems] = useState<Cart[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [beverages, refetch, isLoading, isFeching] =
-    useGetBeverages(formPagination);
+  const [beverages, refetch, isLoading] = useGetBeverages(formPagination);
   const [createOrder, isSubmiting, isSuccess] = useCreateOrder();
   const [beverage, setBeverage] = useState<Beverage>();
 
@@ -57,7 +56,6 @@ function BeverageList() {
 
   function handleAddToCart(cart: Cart) {
     const cartItemsTemp = [...cartItems, cart];
-    console.log(cartItemsTemp);
     const result: Record<string, Cart> = {};
     cartItemsTemp.forEach((cartItemTemp) => {
       const optionKey = cartItemTemp.beverageOptions
